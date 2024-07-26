@@ -16,6 +16,9 @@
                 <input th:field="*{ingredients}" type="checkbox"
                        th:value="${ingredient.id}"/>
                 <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ingredients')}"
+                      th:errors="*{ingredients}">CC Ingredients Error</span>
             </div>
         </div>
         <div class="ingredient-group" id="proteins">
@@ -24,6 +27,9 @@
                 <input th:field="*{ingredients}" type="checkbox"
                        th:value="${ingredient.id}"/>
                 <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ingredients')}"
+                      th:errors="*{ingredients}">CC Ingredients Error</span>
             </div>
         </div>
         <div class="ingredient-group" id="cheeses">
@@ -32,6 +38,9 @@
                 <input th:field="*{ingredients}" type="checkbox"
                        th:value="${ingredient.id}"/>
                 <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ingredients')}"
+                      th:errors="*{ingredients}">CC Ingredients Error</span>
             </div>
         </div>
         <div class="ingredient-group" id="veggies">
@@ -40,6 +49,9 @@
                 <input th:field="*{ingredients}" type="checkbox"
                        th:value="${ingredient.id}"/>
                 <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ingredients')}"
+                      th:errors="*{ingredients}">CC Ingredients Error</span>
             </div>
         </div>
         <div class="ingredient-group" id="sauces">
@@ -48,12 +60,18 @@
                 <input th:field="*{ingredients}" type="checkbox"
                        th:value="${ingredient.id}"/>
                 <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ingredients')}"
+                      th:errors="*{ingredients}">CC Ingredients Error</span>
             </div>
         </div>
     </div>
     <div>
         <h3>Name your taco creation:</h3>
         <input type="text" th:field="*{name}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">CC Name Error</span>
         <br/>
         <button>Submit Your Taco</button>
     </div>

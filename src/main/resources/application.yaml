@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: taco-cloud
+
+  #off thymeleaf templates cache, this is not needed then springDevTools are using
+  # thymeleaf:
+  #   cache: false
+
+  datasource:
+    #disable autogenerate name for database
+    generate-unique-name: false
+    #set name for database
+    name: tacocloud
