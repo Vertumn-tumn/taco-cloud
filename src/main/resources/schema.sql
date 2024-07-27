@@ -1,6 +1,6 @@
 create table if not exists Taco_Order
 (
-    id              identity,
+    id              long primary key auto_increment,
     delivery_name   varchar(50) not null,
     delivery_street varchar(50) not null,
     delivery_city   varchar(50) not null,
@@ -14,7 +14,7 @@ create table if not exists Taco_Order
 
 create table if not exists Taco
 (
-    id             identity,
+    id             long auto_increment,
     name           varchar(50) not null,
     taco_order     bigint      not null,
     taco_order_key bigint      not null,
@@ -41,3 +41,7 @@ alter table Taco
     add foreign key (taco_order) references Taco_Order (id);
 alter table Ingredient_Ref
     add foreign key (ingredient) references Ingredient (id);
+alter table Taco_Order
+    alter column id start with 1000;
+alter table Taco
+    alter column id start with 1

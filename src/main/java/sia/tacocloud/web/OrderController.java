@@ -18,7 +18,7 @@ import sia.tacocloud.data.OrderRepository;
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
-    private final OrderRepository repository;
+    private OrderRepository repository;
 
     public OrderController(OrderRepository repository) {
         this.repository = repository;
