@@ -9,5 +9,10 @@ spring:
   datasource:
     #disable autogenerate name for database
     generate-unique-name: false
-    #set name for database
+    driver-class-name: org.h2.Driver
+    #set name & credentionals for database
     name: tacocloud
+    password: password
+    username: sa
+
+

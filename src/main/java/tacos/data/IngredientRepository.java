@@ -1,10 +1,7 @@
-package sia.tacocloud.data;
+package tacos.data;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
-import sia.tacocloud.Ingredient;
-
-import java.util.Optional;
+import tacos.Ingredient;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 }
