@@ -11,3 +11,6 @@ spring:
     generate-unique-name: false
     #set name for database
     name: tacocloud
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password

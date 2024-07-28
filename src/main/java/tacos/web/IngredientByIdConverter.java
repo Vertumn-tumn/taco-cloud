@@ -1,11 +1,11 @@
-package sia.tacocloud.web;
+package tacos.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import sia.tacocloud.Ingredient;
-import sia.tacocloud.data.IngredientRepository;
+import tacos.Ingredient;
+import tacos.data.IngredientRepository;
 
 @Slf4j
 @Component
@@ -19,7 +19,6 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
     @Override
     public Ingredient convert(String id) {
-        log.info("Id for ingredient = ?", id);
         return ingredientRepository.findById(id).orElse(null);
     }
 }
