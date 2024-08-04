@@ -6,11 +6,7 @@ spring:
   # thymeleaf:
   #   cache: false
 
-  datasource:
-    #disable autogenerate name for database
-    generate-unique-name: false
-    #set name for database
-    name: tacocloud
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+

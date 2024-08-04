@@ -1,14 +1,11 @@
 package tacos;
 
-import org.h2.tools.Server;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import tacos.Ingredient.Type;
 import tacos.data.IngredientRepository;
-
-import java.sql.SQLException;
 
 @SpringBootApplication
 public class TacoCloudApplication {
@@ -32,10 +29,5 @@ public class TacoCloudApplication {
             repo.save(new Ingredient("SLSA", "Salsa", Type.SAUCE));
             repo.save(new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
         };
-    }
-
-    @Bean(initMethod = "start", destroyMethod = "stop")
-    public Server inMemoryH2DatabaseaServer() throws SQLException {
-        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090");
     }
 }
