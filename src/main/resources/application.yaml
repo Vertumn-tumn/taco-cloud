@@ -14,3 +14,13 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password: password
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            provider: github
+            client-id: Ov23lixOjHA9hmDhyTPf
+            client-secret: 6a16f60efa845a35b0335f850bcf80e6038fd111
+            scope: read:user

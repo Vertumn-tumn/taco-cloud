@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,13 +32,16 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authz) -> authz
-                .requestMatchers("/design", "/orders").hasRole("USER")
-                .requestMatchers("/", "/**").permitAll()
-        );
-        http.formLogin(form -> form
-                .loginPage("/login")
-                .defaultSuccessUrl("/design"));
-        return http.build();
+        return http.authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/design", "/orders").hasRole("USER")
+                        .requestMatchers("/", "/**").permitAll())
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/design"))
+                .oauth2Login((oauth2Login) -> oauth2Login
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userAuthoritiesMapper(authorities -> AuthorityUtils.createAuthorityList("ROLE_USER")))
+                        .loginPage("/login"))
+                .build();
     }
 }
