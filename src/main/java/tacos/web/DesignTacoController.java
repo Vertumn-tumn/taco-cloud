@@ -50,7 +50,7 @@ public class DesignTacoController {
     }
 
     @GetMapping
-    public String showDesignForm() {
+    public String showDesignForm(Model model) {
         return "design";
     }
 

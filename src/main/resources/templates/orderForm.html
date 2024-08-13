@@ -26,7 +26,7 @@
     <input type="text" th:field="*{deliveryStreet}"/>
     <span class="validationError"
           th:if="${#fields.hasErrors('deliveryStreet')}"
-          th:errors="*{deliveryStreet">CC deliveryStreet Error</span>
+          th:errors="*{deliveryStreet}">CC deliveryStreet Error</span>
     <br/>
     <label for="deliveryCity">City: </label>
     <input type="text" th:field="*{deliveryCity}"/>

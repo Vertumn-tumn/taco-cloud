@@ -58,4 +58,12 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
+    public void copyDeliveryInfoTo(TacoOrder order){
+        order.setDeliveryName(this.getUsername());
+        order.setDeliveryStreet(this.getStreet());
+        order.setDeliveryCity(this.getCity());
+        order.setDeliveryState(this.getState());
+        order.setDeliveryZip(this.getZip());
+    }
 }
