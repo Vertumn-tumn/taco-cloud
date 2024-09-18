@@ -1,3 +1,5 @@
+
+
 spring:
   application:
     name: taco-cloud
@@ -24,3 +26,18 @@ spring:
             client-id: Ov23lixOjHA9hmDhyTPf
             client-secret: 6a16f60efa845a35b0335f850bcf80e6038fd111
             scope: read:user
+  data:
+    rest:
+      base-path: /data-api
+
+logging:
+  level:
+    org.springframework:
+      orm:
+        jpa: debug
+      data:
+        jpa:
+          repository:
+            query: debug
+      security: debug
+
