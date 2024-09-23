@@ -61,6 +61,7 @@ public class DesignTacoController {
         }
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
+        log.debug("This is debug level");
         return "redirect:/orders/current";
     }
 

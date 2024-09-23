@@ -2,7 +2,11 @@ package tacos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 @Data
 @Entity
@@ -10,9 +14,10 @@ import lombok.*;
 @AllArgsConstructor
 public class Ingredient {
     @Id
-    private final String id;
-    private final String name;
-    private final Type type;
+    @RestResource
+    private String id;
+    private String name;
+    private Type type;
 
     public enum Type {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE

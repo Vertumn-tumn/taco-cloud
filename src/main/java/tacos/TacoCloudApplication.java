@@ -5,7 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import tacos.Ingredient.Type;
 import tacos.data.IngredientRepository;
 import tacos.data.OrderRepository;
@@ -17,7 +21,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 @SpringBootApplication
-public class TacoCloudApplication {
+public class TacoCloudApplication implements RepositoryRestConfigurer {
 
     public static void main(String[] args) {
         SpringApplication.run(TacoCloudApplication.class, args);
@@ -97,5 +101,15 @@ public class TacoCloudApplication {
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Server inMemoryH2DatabaseaServer() throws SQLException {
         return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090");
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    @Override
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+        config.exposeIdsFor(Ingredient.class);
     }
 }

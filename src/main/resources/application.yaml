@@ -1,5 +1,3 @@
-
-
 spring:
   application:
     name: taco-cloud
@@ -31,7 +29,10 @@ spring:
       base-path: /data-api
 
 logging:
+  file:
+    name: taco_cloud_app.log
   level:
+    tacos.web: debug
     org.springframework:
       orm:
         jpa: debug
@@ -40,4 +41,6 @@ logging:
           repository:
             query: debug
       security: debug
+
+
 

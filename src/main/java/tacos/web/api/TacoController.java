@@ -1,6 +1,7 @@
 package tacos.web.api;
 
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @RequestMapping(path = "/api/tacos",
         produces = "application/json")
 @CrossOrigin(origins = "http://tacocloud:8080")
+
 public class TacoController {
 
     private TacoRepository tacoRepo;
@@ -24,7 +26,7 @@ public class TacoController {
 
     @GetMapping(params = "recent")
     public Iterable<Taco> recentTacos() {
-        PageRequest page = PageRequest.of(
+        Pageable page = PageRequest.of(
                 0, 12, Sort.by("createdAt").descending());
         return tacoRepo.findAll(page).getContent();
     }
@@ -35,7 +37,7 @@ public class TacoController {
         return byId.map(taco -> new ResponseEntity<>(taco, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping(consumes="application/json")
+    @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Taco postTaco(@RequestBody Taco taco) {
         return tacoRepo.save(taco);
